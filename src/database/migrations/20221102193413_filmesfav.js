@@ -5,7 +5,7 @@ exports.up = function(knex) {
             .foreign("filme_id")
             .references("filme_id")
             .inTable("filmes")
-            .onDelete("block");
+            .onDelete("cascade");
         
         table.string("user_id").notNullable();
         table
