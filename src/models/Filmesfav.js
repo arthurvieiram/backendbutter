@@ -1,7 +1,10 @@
+const { v4: uuidv4 } = require("uuid");
 const connection = require("../database/connection");
 
 module.exports = {
-    async create() {
+    async create(filmesfav) {
+        const filme_id = uuidv4();
+        filmesfav.filme_id = filme_id; 
         const result = await connection("filmesfav")
         .insert(filmesfav);
         return result;
