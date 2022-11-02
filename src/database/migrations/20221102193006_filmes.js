@@ -1,7 +1,7 @@
 exports.up = function(knex) {
     return knex.schema.createTable("filmes", function(table) {
         table.string("filme_id").primary().notNullable();
-        table.string("nome").notNullable();
+        table.string("filme_nome").notNullable();
         table.data("data").notNullable();
         table.string("diretor").notNullable();
     });
