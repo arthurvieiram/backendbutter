@@ -1,27 +1,16 @@
 const express = require("express");
 const routes = express.Router();
 
-const users = [];
-let favfilmes = [];
+const UserController = require(".controllers/UserController");
+const FilmController = require(".controllers/UserController");
 
-routes.get("/users", (req, res) => {
-    const query = req.query;
-    
-    res.status(200).json({users});
-});
+// Users
+routes.get("/users/:user_id", UserController.geyById);
+routes.post("/users", UserController.create);
+routes.delete("/users/:user_id", UserController.delete);
 
-routes.post("/users", (req, res) => {
-    const newUser = req.body;
-    
-    users.push(newUser);
-    
-    res.status(200).json({message: "Usuário cadastrado com sucesso!"});
-});
-
-routes.delete("/users/:user_id", (req, res) => {
-     const userId = req.params.user_id;
-     
-     res.status(200).json({message: "Usuário excluído com sucesso!"});
-});
+// Filmes favoritados
+routes.get("/filmes/filme_nome", FilmController.geyByName);
+routes.delete("/filmes/:filme_nome", FilmController.delete);
 
 module.exports = routes;
