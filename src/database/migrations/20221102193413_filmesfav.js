@@ -1,5 +1,6 @@
 exports.up = function(knex) {
     return knex.schema.createTable("filmesfav", function(table) {
+        //table.string("filmefav_id").primary().notNullable();
         table.string("filme_id").notNullable();
         table
             .foreign("filme_id")

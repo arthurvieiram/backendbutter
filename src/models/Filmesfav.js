@@ -2,33 +2,36 @@ const { v4: uuidv4 } = require("uuid");
 const connection = require("../database/connection");
 
 module.exports = {
-    async create(filmesfav) {
-        const filme_id = uuidv4();
-        filmesfav.filme_id = filme_id; 
+    async create(filmesfav, filmeId, userId) {
+        //const filme_id = uuidv4();
+        filmesfav.filme_id = filmeId; 
+        filmesfav.user_id = userId;
         const result = await connection("filmesfav")
         .insert(filmesfav);
-        return result;
+        return filmesfav;
     },
 
-    async getById({ filme_id, user_id}){
+    async get( user_id ){
         const result = await connection("filmesfav")
-        .where({filme_id, user_id})
+        .where({ user_id })
         .select("*");
         return result;
 
     },
 
-    async updateById(filme_id, filmesfav){
+    async update(filme_id, filmesfav){
         const result = await connection("filmesfav")
         .where(filme_id)
         .update(filmesfav);
         return result;
     },
 
-    async deleteById(filme_id){
+    async delete(filme_id, user_id){
         const result = await connection("filmesfav")
-        .where({ filme_id})
+        .where({filme_id, user_id})
         .delete();
+        
+        return result;
 
     }
 };
