@@ -4,14 +4,14 @@ exports.up = function(knex) {
         table.string("filme_id").notNullable();
         table
             .foreign("filme_id")
-            .references("filme_id")
+            .references("id")
             .inTable("filmes")
             .onDelete("cascade");
         
         table.string("user_id").notNullable();
         table
             .foreign("user_id")
-            .references("user_id")
+            .references("id")
             .inTable("user")
             .onDelete("cascade");
     });
