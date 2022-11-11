@@ -7,15 +7,15 @@ module.exports = {
             const newUser = request.body;
             
             /*adicionando firebase*/
-            const uid = await firebase.createNewUser(user.email, user.password);
-            delete user.password;
+            const uid = await firebase.createNewUser(user.email, user.senha);
+            delete user.senha;
             user.firebase_id = uid;
             /* 1) adicionar no nosso diagrama uml o campo "firebase_id"
              2) rodar npx knex migrate:rollback (desfaz todas as migrations feitas)
              3) na Migration user colocar "table.string("firebase_id").notNullable();"
              4) Depois disso, salvar e rodar todas e dar um "npx knex migrate:lastest (vai rodar todas as migrations")
              5) última coisa : ir em uservallidator "que ainda não está criado"
-              na parte de "create" colocar "password: Joi.string().min(aqui vai ser o tam. senha).required(),"
+              na parte de "create" colocar "senha: Joi.string().min(aqui vai ser o tam. senha).required(),"
               fazer o mesmo para name: e email:
               Após isso temos que dar npm start e testar no inmsonia pra ver se tá tudo certo.
               */
