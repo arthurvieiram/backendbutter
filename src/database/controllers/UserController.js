@@ -1,5 +1,5 @@
 const User = require("../../models/User");
-const firebase = require("../utilities/firebase");/*Chamando a função do firebase*/
+const firebase = require("../../utilities/firebase");/*Chamando a função do firebase*/
 
 module.exports = {
     async create(request, response) {

@@ -3,23 +3,37 @@ const { celebrate, Segments, Joi } = require("celebrate");
 module.exports = {
     create: celebrate({
         [Segments.BODY]: Joi.object().keys({
-            name: Joi.string().required(),
+            nome: Joi.string().alphanum().min(1).max(40).required(),
             email: Joi.string().email().required(),
+            senha: Joi.string().min(6).max(20).required(),
+            endereco: Joi.string().max(150).required(),
+            idade: Joi.string().max(3).required(),
         })
     }),
+
     get: celebrate({
-        [Segments.BODY]: Joi.object().keys({
-            
+        [Segments.PARAMS]: Joi.object().keys({
+            user_id: Joi.string().required(),
         })
     }),
+
     update: celebrate({
+        [Segments.PARAMS]: Joi.object().keys({
+            user_id: Joi.string().required(),
+        }),
         [Segments.BODY]: Joi.object().keys({
-            
+            nome: Joi.string().alphanum().min(1).max(40).required(),
+            email: Joi.string().email().required(),
+            senha: Joi.string().min(8).max(20).required(),
+            endereco: Joi.string().max(150).required(),
+            idade: Joi.string().max(3).required(),
         })
+        .min(1),
     }),
+
     delete: celebrate({
-        [Segments.BODY]: Joi.object().keys({
-            
+        [Segments.PARAMS]: Joi.object().keys({
+            user_id: Joi.string().required(),
         })
-    }),
+    })
 }
