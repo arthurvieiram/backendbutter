@@ -9,7 +9,7 @@ module.exports = {
             return response.status(200).json(result);
 
         } catch (error) {
-            console.warn('Filme não favoritado', error);
+            console.warn('Filme não criado', error);
             return response.status(500).json({notification: "error"});
         }
     },

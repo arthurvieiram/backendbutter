@@ -1,5 +1,5 @@
-var firebase = require('firebase/app');
-require ('firebase/auth');
+const firebase = require("firebase/app");
+require ("firebase/auth");
 
 const firebaseConfig = {
     apiKey: process.env.API_KEY,
@@ -7,7 +7,7 @@ const firebaseConfig = {
     projectId: process.env.PROJECT_ID ,
     storageBucket: process.env.STORAGE_BUCKET ,
     messagingSenderId: process.env.MESSAGING_SENDER_ID ,
-}
+};
 
 firebase.initializeApp(firebaseConfig);
 
@@ -27,4 +27,4 @@ module.exports = {
         
         return result.user.uid; 
     },
-}
+};
