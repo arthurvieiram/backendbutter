@@ -16,8 +16,9 @@ module.exports = {
 
     async get(request, response) {
         try {
-            const {filme_id} = request.params;
-            const result = await Filmes.get(filme_id);
+            const {filme_id} = request.query;
+            const filter = filme_id ? {filme_id} : {}
+            const result = await Filmes.get(filter);
 
             return response.status(200).json(result);
 

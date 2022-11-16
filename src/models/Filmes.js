@@ -10,9 +10,9 @@ module.exports = {
         return filmes;
     },
 
-    async get( filme_id ){
+    async get( filter ){
         const result = await connection("filmes")
-        .where({ filme_id })
+        .where( filter )
         .select("*");
         return result;
 

@@ -19,6 +19,15 @@ module.exports = {
 
     },
 
+    async getByFields({ firebase_id }){
+        console.log(firebase_id);
+        const result = await connection("user")
+        .where({firebase_id})
+        .select("*");
+        return result;
+
+    },
+
     // async getByName({ user_id }){
     //     const result = await connection("user")
     //     .where({ user_nome })
