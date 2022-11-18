@@ -13,7 +13,8 @@ module.exports = {
 
     async get( user_id ){
         const result = await connection("filmesfav")
-        .where({ user_id })
+        .innerJoin( "filmes", "filmes.filme_id", "filmesfav.filme_id")
+        .where({ "filmesfav.user_id": user_id })
         .select("*");
         return result;
 

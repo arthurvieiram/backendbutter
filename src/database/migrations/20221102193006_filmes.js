@@ -4,6 +4,7 @@ exports.up = function(knex) {
         table.string("nome").notNullable();
         table.string("data").notNullable();
         table.string("diretor").notNullable();
+        table.string("imagem").notNullable();
     });
 };
 
